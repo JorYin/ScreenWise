@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cors({
   origin: "https://screen-wise.vercel.app",
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie'],
   credentials: true
 }));
 
