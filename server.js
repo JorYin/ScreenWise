@@ -4,7 +4,7 @@ import express from 'express';
 import passport from './config/passport.js';
 import session from 'express-session';
 import mongoose from 'mongoose';
-import MongoStore from 'connect-mongo';
+import connectMongo from 'connect-mongo';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
