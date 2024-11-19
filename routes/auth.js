@@ -19,6 +19,7 @@ router.get(
 )
 
 router.get('/profile', isAuthenticated, (req, res) => {
+  console.log(res.json.user);
   return res.json(req.user);
 });
 
