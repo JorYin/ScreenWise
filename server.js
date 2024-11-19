@@ -22,7 +22,7 @@ const app = express();
 // Middleware Setup
 app.use(express.json());
 app.use(cors({
-  origin: 'https://screen-wise.vercel.app',
+  origin: "https://screen-wise.vercel.app",
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
