@@ -28,12 +28,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.use(
-  helmet({
-    crossOriginResourcePolicy: { policy: "cross-origin" },
-    crossOriginOpenerPolicy: { policy: "same-origin-allow-popups" }
-  })
-);
+app.use(helmet());
 app.use(morgan('dev'));
 
 // Session Setup
