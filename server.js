@@ -22,14 +22,14 @@ const app = express();
 // Middleware Setup
 app.use(express.json());
 app.use(cors({
-  origin: 'https://screen-wise.vercel.app',
+  origin: "https://screen-wise.vercel.app",
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
 
 app.use(helmet());
-app.use(morgan('dev'));
+app.use(morgan());
 
 // Session Setup
 app.use(session({
@@ -59,11 +59,9 @@ app.use('/api/users', userRouter);
 
 // Mongoose SetUp
 // Checking to see if there is any error connecting to the mongoDB using the PORT
-const PORT = 6001;
+const PORT = process.env.PORT || 6001; // Use Heroku's PORT or fallback to 6001 for local dev
 mongoose.connect(process.env.MONGO_URL)
-.then(() => {
-  app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
-})
-.catch((error) => console.log(`${PORT} did not connect`));
-
-export default app;
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+  })
+  .catch((error) => console.log(`Error connecting to MongoDB: ${error.message}`));
