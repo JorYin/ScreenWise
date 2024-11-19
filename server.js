@@ -4,7 +4,7 @@ import express from 'express';
 import passport from './config/passport.js';
 import session from 'express-session';
 import mongoose from 'mongoose';
-import connectMongo from 'connect-mongo';
+import MongoStore from 'connect-mongo';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -32,13 +32,14 @@ app.use(helmet());
 app.use(morgan('dev'));
 
 // Session Setup
-const MongoStore = connectMongo(session);
-
 app.use(session({
   secret: process.env.COOKIESECRET,
   resave: false,
   saveUninitialized: false,
-  store: new MongoStore({ mongoUrl: process.env.MONGO_URL }),
+  store: MongoStore.create({ // Correct initialization for v4+
+    mongoUrl: process.env.MONGO_URL,
+    ttl: 24 * 60 * 60 * 1000
+  }),
   cookie: {
     secure: true,
     httpOnly: true,
