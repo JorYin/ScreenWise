@@ -24,7 +24,7 @@ dotenv.config();
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: 'https://screen-wise-ntsk.vercel.app/auth/google/callback',
+        callbackURL: 'https://screenwise-backend-1648094cfb48.herokuapp.com/auth/google/callback',
         scope: ['profile'],
       },
       async(accessToken, refreshToken, profile, done) => {
